@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx}"],
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -12,7 +12,7 @@ export default {
         paper: "#ffffff",
         muted: "#5b6676",
         line: "rgba(16, 24, 39, 0.12)",
-        accent: "#c9a25f", // warm “heritage” accent vibe
+        accent: "#c9a25f",
       },
       fontFamily: {
         sans: [
