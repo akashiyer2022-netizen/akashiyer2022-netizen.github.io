@@ -37,10 +37,11 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 inset-x-0 z-50 bg-paper/90 backdrop-blur border-b border-line">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-        <div className="h-16 flex items-center justify-between gap-3">
-          {/* Brand */}
-          <NavLink to="/about-us" className="flex items-center gap-2">
+      {/* FULL-WIDTH container */}
+      <div className="w-full px-4 sm:px-6 lg:px-10">
+        <div className="h-16 flex items-center gap-4">
+          {/* Brand (left) */}
+          <NavLink to="/about-us" className="flex items-center gap-2 shrink-0">
             <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-ink-950 text-paper text-sm font-semibold">
               U
             </span>
@@ -50,8 +51,8 @@ export default function Navbar() {
             </div>
           </NavLink>
 
-          {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-6">
+          {/* Desktop nav (center, spreads) */}
+          <nav className="hidden lg:flex flex-1 items-center justify-center gap-8">
             {items.map((it) => (
               <NavItem key={it.to} to={it.to}>
                 {it.label}
@@ -60,7 +61,7 @@ export default function Navbar() {
           </nav>
 
           {/* Right actions */}
-          <div className="flex items-center gap-2">
+          <div className="ml-auto flex items-center gap-2 shrink-0">
             <button
               type="button"
               className="hidden sm:inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-ink-900 hover:bg-ink-900/5 transition"
@@ -92,7 +93,7 @@ export default function Navbar() {
       {/* Mobile panel */}
       {open && (
         <div className="lg:hidden border-t border-line bg-paper">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-4">
+          <div className="w-full px-4 sm:px-6 lg:px-10 py-4">
             <div className="grid gap-3">
               {items.map((it) => (
                 <NavLink
