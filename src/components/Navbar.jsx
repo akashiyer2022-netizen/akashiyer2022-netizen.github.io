@@ -1,16 +1,24 @@
 import React, { useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
+import logo from "../assets/ursa_logo.webp";
 
-function NavItem({ to, children }) {
+function TopLink({ to, children }) {
   return (
     <NavLink
       to={to}
+      end={to === "/"}
       className={({ isActive }) =>
         [
-          "text-sm font-medium tracking-wide",
+          "relative inline-flex items-center h-16",
+          "text-[14px] font-semibold text-ink-950/90",
           "hover:text-ink-950 transition-colors",
-          isActive ? "text-ink-950" : "text-ink-900/90",
+          // underline (RigB-like blue bar)
+          "after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0",
+          "after:h-[3px] after:bg-blue-600",
+          "after:origin-left after:scale-x-0 after:transition-transform after:duration-200",
+          "hover:after:scale-x-100",
+          isActive ? "after:scale-x-100" : "",
         ].join(" ")
       }
     >
@@ -20,90 +28,148 @@ function NavItem({ to, children }) {
 }
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
+  // Tabs like your Ursa homepage (3rd image)
   const items = useMemo(
     () => [
-      { label: "What's on", to: "/whats-on" },
-      { label: "Learning", to: "/learning" },
-      { label: "Explore science", to: "/explore-science" },
-      { label: "Christmas Lectures", to: "/christmas-lectures" },
-      { label: "Visit", to: "/visit" },
-      { label: "Support us", to: "/support-us" },
-      { label: "About us", to: "/about-us" },
+      { label: "About Us", to: "/about-us" },
+      { label: "Allied Scholars", to: "/allied-scholars" },
+      { label: "Sparx", to: "/sparx" },
+      { label: "Cortex", to: "/cortex" },
+      { label: "Careers", to: "/careers" },
+      { label: "Contact Us", to: "/contact" },
     ],
     []
   );
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-paper/90 backdrop-blur border-b border-line">
-      {/* FULL-WIDTH container */}
-      <div className="w-full px-4 sm:px-6 lg:px-10">
-        <div className="h-16 flex items-center gap-4">
-          {/* Brand (left) */}
-          <NavLink to="/about-us" className="flex items-center gap-2 shrink-0">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-ink-950 text-paper text-sm font-semibold">
-              U
-            </span>
-            <div className="leading-tight">
-              <div className="text-sm font-semibold tracking-tight">Ursa Majors</div>
-              <div className="text-[11px] text-muted -mt-0.5">Ri-style layout</div>
-            </div>
+    <header className="fixed top-0 inset-x-0 z-50 bg-paper border-b border-line">
+      <div className="w-full px-6 sm:px-8">
+        <div className="h-16 flex items-center gap-6">
+          {/* Left: logo */}
+          <NavLink to="/" className="shrink-0 flex items-center gap-3">
+            <img
+              src={logo}
+              alt="Ursa Majors"
+              className="h-10 w-auto object-contain"
+            />
           </NavLink>
 
-          {/* Desktop nav (center, spreads) */}
-          <nav className="hidden lg:flex flex-1 items-center justify-center gap-8">
+          {/* Center: tabs across the bar */}
+          <nav className="hidden lg:flex flex-1 justify-center gap-8">
             {items.map((it) => (
-              <NavItem key={it.to} to={it.to}>
+              <TopLink key={it.to} to={it.to}>
                 {it.label}
-              </NavItem>
+              </TopLink>
             ))}
           </nav>
 
-          {/* Right actions */}
-          <div className="ml-auto flex items-center gap-2 shrink-0">
-            <button
-              type="button"
-              className="hidden sm:inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm text-ink-900 hover:bg-ink-900/5 transition"
-              aria-label="Search"
-            >
-              <FiSearch />
-              <span className="hidden md:inline">Search</span>
-            </button>
+          {/* Right: Search + CTA */}
+          <div className="hidden lg:flex items-center gap-5 shrink-0">
+            <div className="relative">
+              <button
+                type="button"
+                className="inline-flex items-center gap-2 text-[14px] font-semibold text-ink-950/90 hover:text-ink-950 transition"
+                onClick={() => setSearchOpen((v) => !v)}
+                aria-label="Search"
+              >
+                <span>Search</span>
+                <FiSearch className="text-lg" />
+              </button>
+
+              {searchOpen && (
+                <div className="absolute right-0 mt-3 w-[280px] rounded-xl border border-line bg-paper shadow-soft p-3">
+                  <input
+                    type="search"
+                    placeholder="Search…"
+                    className="h-10 w-full rounded-lg border border-line px-3 text-sm
+                               focus:outline-none focus:ring-2 focus:ring-blue-600/30"
+                    autoFocus
+                  />
+                  <button
+                    className="mt-2 w-full h-10 rounded-lg bg-ink-950 text-paper text-sm font-bold hover:bg-ink-900 transition"
+                    onClick={() => setSearchOpen(false)}
+                    type="button"
+                  >
+                    Search
+                  </button>
+                </div>
+              )}
+            </div>
 
             <NavLink
-              to="/support-us"
-              className="hidden sm:inline-flex rounded-full bg-ink-950 text-paper px-4 py-2 text-sm font-semibold hover:bg-ink-900 transition"
+              to="/get-involved"
+              className="h-10 inline-flex items-center rounded-full bg-ink-950 px-5
+                         text-sm font-bold text-paper hover:bg-ink-900 transition"
             >
-              Become a Member
+              Get Involved
             </NavLink>
+          </div>
+
+          {/* Mobile controls */}
+          <div className="lg:hidden ml-auto flex items-center gap-2">
+            <button
+              type="button"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink-900/5 transition"
+              onClick={() => setSearchOpen((v) => !v)}
+              aria-label="Search"
+            >
+              <FiSearch className="text-xl" />
+            </button>
 
             <button
               type="button"
-              className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink-900/5 transition"
-              aria-label={open ? "Close menu" : "Open menu"}
-              onClick={() => setOpen((v) => !v)}
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink-900/5 transition"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open menu"
             >
-              {open ? <FiX className="text-xl" /> : <FiMenu className="text-xl" />}
+              <FiMenu className="text-xl" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile panel */}
-      {open && (
+      {/* Mobile search dropdown */}
+      {searchOpen && (
         <div className="lg:hidden border-t border-line bg-paper">
-          <div className="w-full px-4 sm:px-6 lg:px-10 py-4">
-            <div className="grid gap-3">
+          <div className="w-full px-6 sm:px-8 py-3">
+            <input
+              type="search"
+              placeholder="Search…"
+              className="h-10 w-full rounded-lg border border-line px-3 text-sm
+                         focus:outline-none focus:ring-2 focus:ring-blue-600/30"
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="lg:hidden border-t border-line bg-paper">
+          <div className="w-full px-6 sm:px-8 py-4">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-semibold text-ink-950">Menu</p>
+              <button
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink-900/5 transition"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+              >
+                <FiX className="text-xl" />
+              </button>
+            </div>
+
+            <div className="mt-3 grid gap-2">
               {items.map((it) => (
                 <NavLink
                   key={it.to}
                   to={it.to}
-                  onClick={() => setOpen(false)}
+                  onClick={() => setMobileOpen(false)}
                   className={({ isActive }) =>
                     [
-                      "py-2 text-sm font-semibold",
-                      isActive ? "text-ink-950" : "text-ink-900/90",
+                      "py-2 text-[14px] font-semibold",
+                      isActive ? "text-ink-950" : "text-ink-950/80",
                     ].join(" ")
                   }
                 >
@@ -111,15 +177,13 @@ export default function Navbar() {
                 </NavLink>
               ))}
 
-              <div className="pt-2">
-                <NavLink
-                  to="/support-us"
-                  onClick={() => setOpen(false)}
-                  className="inline-flex rounded-full bg-ink-950 text-paper px-4 py-2 text-sm font-semibold hover:bg-ink-900 transition"
-                >
-                  Become a Member
-                </NavLink>
-              </div>
+              <NavLink
+                to="/get-involved"
+                onClick={() => setMobileOpen(false)}
+                className="mt-3 inline-flex h-10 items-center justify-center rounded-full bg-ink-950 px-5 text-sm font-bold text-paper hover:bg-ink-900 transition"
+              >
+                Get Involved
+              </NavLink>
             </div>
           </div>
         </div>

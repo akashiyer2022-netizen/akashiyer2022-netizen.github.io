@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import About from "./pages/About.jsx";
@@ -12,22 +12,15 @@ export default function App() {
 
       <main className="flex-1">
         <Routes>
-          <Route path="/" element={<Navigate to="/about-us" replace />} />
+          <Route path="/" element={<Placeholder title="Home" />} />
           <Route path="/about-us" element={<About />} />
 
-          {/* Placeholder routes so nav items don’t 404 */}
-          <Route path="/whats-on" element={<Placeholder title="What's on" />} />
-          <Route path="/learning" element={<Placeholder title="Learning" />} />
-          <Route path="/explore-science" element={<Placeholder title="Explore science" />} />
-          <Route path="/christmas-lectures" element={<Placeholder title="Christmas Lectures" />} />
-          <Route path="/visit" element={<Placeholder title="Visit" />} />
-          <Route path="/support-us" element={<Placeholder title="Support us" />} />
-
-          {/* “Read more” destinations from the Ursa “Our Teams” cards */}
-          <Route path="/governance" element={<Placeholder title="The Governance" />} />
-          <Route path="/education-team" element={<Placeholder title="The Education Team" />} />
-          <Route path="/projects-team" element={<Placeholder title="The Projects Team" />} />
-          <Route path="/advisors" element={<Placeholder title="The Advisors" />} />
+          <Route path="/allied-scholars" element={<Placeholder title="Allied Scholars" />} />
+          <Route path="/sparx" element={<Placeholder title="Sparx" />} />
+          <Route path="/cortex" element={<Placeholder title="Cortex" />} />
+          <Route path="/careers" element={<Placeholder title="Careers" />} />
+          <Route path="/contact" element={<Placeholder title="Contact Us" />} />
+          <Route path="/get-involved" element={<Placeholder title="Get Involved" />} />
 
           <Route path="*" element={<Placeholder title="Not found" />} />
         </Routes>
