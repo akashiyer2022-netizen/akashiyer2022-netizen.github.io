@@ -135,7 +135,7 @@ export default function About() {
               <img
                 src={rushilImg}
                 alt="Rushil Sharan"
-                className="w-full h-[320px] object-cover"
+                className="w-full aspect-[4/5] object-contain bg-ink-900/5"
               />
             </div>
             <p className="mt-3 text-sm text-muted">
