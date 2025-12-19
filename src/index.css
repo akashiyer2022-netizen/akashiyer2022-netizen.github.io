@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional: nicer typography for the body text */
+.prose p {
+  @apply text-white/80 leading-relaxed;
+}
