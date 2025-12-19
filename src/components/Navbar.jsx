@@ -11,9 +11,9 @@ function TopLink({ to, children }) {
       className={({ isActive }) =>
         [
           "relative inline-flex items-center h-16",
-          "text-[14px] font-semibold text-ink-950/90",
+          "text-[14px] font-semibold tracking-wide text-ink-950/90",
           "hover:text-ink-950 transition-colors",
-          // underline (RigB-like blue bar)
+          // blue underline on hover + active
           "after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0",
           "after:h-[3px] after:bg-blue-600",
           "after:origin-left after:scale-x-0 after:transition-transform after:duration-200",
@@ -31,7 +31,6 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
 
-  // Tabs like your Ursa homepage (3rd image)
   const items = useMemo(
     () => [
       { label: "About Us", to: "/about-us" },
@@ -45,7 +44,7 @@ export default function Navbar() {
   );
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-paper border-b border-line">
+    <header className="fixed top-0 inset-x-0 z-50 bg-red-500 border-b border-line">
       <div className="w-full px-6 sm:px-8">
         <div className="h-16 flex items-center gap-6">
           {/* Left: logo */}
@@ -57,7 +56,7 @@ export default function Navbar() {
             />
           </NavLink>
 
-          {/* Center: tabs across the bar */}
+          {/* Center: tabs across the screen */}
           <nav className="hidden lg:flex flex-1 justify-center gap-8">
             {items.map((it) => (
               <TopLink key={it.to} to={it.to}>
@@ -80,7 +79,7 @@ export default function Navbar() {
               </button>
 
               {searchOpen && (
-                <div className="absolute right-0 mt-3 w-[280px] rounded-xl border border-line bg-paper shadow-soft p-3">
+                <div className="absolute right-0 mt-3 w-[300px] rounded-xl border border-line bg-paper shadow-soft p-3">
                   <input
                     type="search"
                     placeholder="Search…"
@@ -108,7 +107,7 @@ export default function Navbar() {
             </NavLink>
           </div>
 
-          {/* Mobile controls */}
+          {/* Mobile buttons */}
           <div className="lg:hidden ml-auto flex items-center gap-2">
             <button
               type="button"
@@ -131,7 +130,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile search dropdown */}
+      {/* Mobile search bar */}
       {searchOpen && (
         <div className="lg:hidden border-t border-line bg-paper">
           <div className="w-full px-6 sm:px-8 py-3">
