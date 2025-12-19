@@ -7,7 +7,7 @@ export default {
     extend: {
       fontFamily: {
         sans: [
-          "Neue Haas Grotesk",
+          "Inter",
           "Helvetica Neue",
           "Helvetica",
           "Arial",
