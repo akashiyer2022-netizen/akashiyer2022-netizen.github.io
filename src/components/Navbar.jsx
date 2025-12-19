@@ -11,8 +11,8 @@ function TopLink({ to, children }) {
       className={({ isActive }) =>
         [
           "relative inline-flex items-center h-16",
-          "text-[14px] font-semibold tracking-wide text-ink-950/90",
-          "hover:text-ink-950 transition-colors",
+          "text-[14px] font-semibold tracking-wide text-white/90",
+          "hover:text-white transition-colors",
           // blue underline on hover + active
           "after:content-[''] after:absolute after:left-0 after:right-0 after:bottom-0",
           "after:h-[3px] after:bg-blue-600",
@@ -44,19 +44,21 @@ export default function Navbar() {
   );
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 bg-red-500 border-b border-line">
+    <header className="fixed top-0 inset-x-0 z-50 bg-slate-950 border-b border-white/10">
       <div className="w-full px-6 sm:px-8">
         <div className="h-16 flex items-center gap-6">
-          {/* Left: logo */}
-          <NavLink to="/" className="shrink-0 flex items-center gap-3">
-            <img
-              src={logo}
-              alt="Ursa Majors"
-              className="h-10 w-auto object-contain"
-            />
+          {/* Left: logo (hard constrained) */}
+          <NavLink to="/" className="shrink-0 flex items-center">
+            <div className="h-10 w-10 rounded-lg overflow-hidden bg-white/5 flex items-center justify-center">
+              <img
+                src={logo}
+                alt="Ursa Majors"
+                className="h-10 w-10 object-cover"
+              />
+            </div>
           </NavLink>
 
-          {/* Center: tabs across the screen */}
+          {/* Center: tabs */}
           <nav className="hidden lg:flex flex-1 justify-center gap-8">
             {items.map((it) => (
               <TopLink key={it.to} to={it.to}>
@@ -70,7 +72,7 @@ export default function Navbar() {
             <div className="relative">
               <button
                 type="button"
-                className="inline-flex items-center gap-2 text-[14px] font-semibold text-ink-950/90 hover:text-ink-950 transition"
+                className="inline-flex items-center gap-2 text-[14px] font-semibold text-white/90 hover:text-white transition"
                 onClick={() => setSearchOpen((v) => !v)}
                 aria-label="Search"
               >
@@ -79,16 +81,16 @@ export default function Navbar() {
               </button>
 
               {searchOpen && (
-                <div className="absolute right-0 mt-3 w-[300px] rounded-xl border border-line bg-paper shadow-soft p-3">
+                <div className="absolute right-0 mt-3 w-[300px] rounded-xl border border-white/10 bg-slate-950 shadow-soft p-3">
                   <input
                     type="search"
                     placeholder="Search…"
-                    className="h-10 w-full rounded-lg border border-line px-3 text-sm
+                    className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white placeholder:text-white/50
                                focus:outline-none focus:ring-2 focus:ring-blue-600/30"
                     autoFocus
                   />
                   <button
-                    className="mt-2 w-full h-10 rounded-lg bg-ink-950 text-paper text-sm font-bold hover:bg-ink-900 transition"
+                    className="mt-2 w-full h-10 rounded-lg bg-white text-slate-950 text-sm font-bold hover:bg-white/90 transition"
                     onClick={() => setSearchOpen(false)}
                     type="button"
                   >
@@ -100,18 +102,18 @@ export default function Navbar() {
 
             <NavLink
               to="/get-involved"
-              className="h-10 inline-flex items-center rounded-full bg-ink-950 px-5
-                         text-sm font-bold text-paper hover:bg-ink-900 transition"
+              className="h-10 inline-flex items-center rounded-full bg-white px-5
+                         text-sm font-bold text-slate-950 hover:bg-white/90 transition"
             >
               Get Involved
             </NavLink>
           </div>
 
-          {/* Mobile buttons */}
+          {/* Mobile controls */}
           <div className="lg:hidden ml-auto flex items-center gap-2">
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink-900/5 transition"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-white/10 transition text-white"
               onClick={() => setSearchOpen((v) => !v)}
               aria-label="Search"
             >
@@ -120,7 +122,7 @@ export default function Navbar() {
 
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink-900/5 transition"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-white/10 transition text-white"
               onClick={() => setMobileOpen(true)}
               aria-label="Open menu"
             >
@@ -130,14 +132,14 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile search bar */}
+      {/* Mobile search */}
       {searchOpen && (
-        <div className="lg:hidden border-t border-line bg-paper">
+        <div className="lg:hidden border-t border-white/10 bg-slate-950">
           <div className="w-full px-6 sm:px-8 py-3">
             <input
               type="search"
               placeholder="Search…"
-              className="h-10 w-full rounded-lg border border-line px-3 text-sm
+              className="h-10 w-full rounded-lg border border-white/10 bg-white/5 px-3 text-sm text-white placeholder:text-white/50
                          focus:outline-none focus:ring-2 focus:ring-blue-600/30"
             />
           </div>
@@ -146,12 +148,12 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-line bg-paper">
+        <div className="lg:hidden border-t border-white/10 bg-slate-950">
           <div className="w-full px-6 sm:px-8 py-4">
             <div className="flex items-center justify-between">
-              <p className="text-sm font-semibold text-ink-950">Menu</p>
+              <p className="text-sm font-semibold text-white">Menu</p>
               <button
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-ink-900/5 transition"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full hover:bg-white/10 transition text-white"
                 onClick={() => setMobileOpen(false)}
                 aria-label="Close menu"
               >
@@ -168,7 +170,7 @@ export default function Navbar() {
                   className={({ isActive }) =>
                     [
                       "py-2 text-[14px] font-semibold",
-                      isActive ? "text-ink-950" : "text-ink-950/80",
+                      isActive ? "text-white" : "text-white/80",
                     ].join(" ")
                   }
                 >
@@ -179,7 +181,7 @@ export default function Navbar() {
               <NavLink
                 to="/get-involved"
                 onClick={() => setMobileOpen(false)}
-                className="mt-3 inline-flex h-10 items-center justify-center rounded-full bg-ink-950 px-5 text-sm font-bold text-paper hover:bg-ink-900 transition"
+                className="mt-3 inline-flex h-10 items-center justify-center rounded-full bg-white px-5 text-sm font-bold text-slate-950 hover:bg-white/90 transition"
               >
                 Get Involved
               </NavLink>

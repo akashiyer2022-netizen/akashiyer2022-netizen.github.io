@@ -12,20 +12,6 @@ export default {
         paper: "#ffffff",
         muted: "#5b6676",
         line: "rgba(16, 24, 39, 0.12)",
-        accent: "#c9a25f",
-      },
-      fontFamily: {
-        sans: [
-          "Inter",
-          "ui-sans-serif",
-          "system-ui",
-          "-apple-system",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica",
-          "Arial",
-          "sans-serif",
-        ],
       },
       boxShadow: {
         soft: "0 10px 30px rgba(16,24,39,0.10)",
