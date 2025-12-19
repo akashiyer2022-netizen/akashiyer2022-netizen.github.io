@@ -1,13 +1,13 @@
-// src/components/Navbar.jsx
 import { useMemo, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
+/* Smaller, quieter social icon wrapper */
 function IconLink({ href, label, children }) {
   return (
     <a
       href={href}
       aria-label={label}
-      className="text-ink/65 hover:text-ink transition"
+      className="text-ink/55 hover:text-ink transition"
       target="_blank"
       rel="noreferrer"
     >
@@ -16,11 +16,12 @@ function IconLink({ href, label, children }) {
   );
 }
 
-function SimpleXIcon() {
+/* Smaller X icon */
+function XIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className="h-4 w-4"
       fill="currentColor"
       aria-hidden="true"
     >
@@ -29,11 +30,12 @@ function SimpleXIcon() {
   );
 }
 
-function SimpleLinkedInIcon() {
+/* Smaller LinkedIn icon */
+function LinkedInIcon() {
   return (
     <svg
       viewBox="0 0 24 24"
-      className="h-5 w-5"
+      className="h-4 w-4"
       fill="currentColor"
       aria-hidden="true"
     >
@@ -64,24 +66,24 @@ export default function Navbar() {
           {/* Brand */}
           <Link
             to="/"
-            className="text-ink font-semibold tracking-tightest hover:text-accent transition"
+            className="font-semibold tracking-tightest text-ink hover:text-accent transition"
           >
             The Ursa Majors Group
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             {links.map((l) => (
               <NavLink
                 key={l.to}
                 to={l.to}
                 className={({ isActive }) =>
                   [
-                    "text-sm tracking-[0.08em] uppercase",
+                    "text-[11px] uppercase tracking-[0.22em]",
                     "transition",
                     isActive
-                      ? "text-ink underline decoration-accent underline-offset-8"
-                      : "text-ink/70 hover:text-ink hover:underline hover:decoration-rule hover:underline-offset-8",
+                      ? "text-ink border-b border-accent pb-1"
+                      : "text-ink/65 hover:text-ink hover:border-b hover:border-rule pb-1",
                   ].join(" ")
                 }
               >
@@ -90,22 +92,21 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop socials */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Socials */}
+          <div className="hidden md:flex items-center gap-3">
             <IconLink href="https://x.com" label="X">
-              <SimpleXIcon />
+              <XIcon />
             </IconLink>
             <IconLink href="https://www.linkedin.com" label="LinkedIn">
-              <SimpleLinkedInIcon />
+              <LinkedInIcon />
             </IconLink>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu */}
           <button
-            className="md:hidden inline-flex items-center justify-center border border-rule bg-paper px-3 py-2 text-sm text-ink hover:border-ink/40 transition"
+            className="md:hidden border border-rule px-3 py-2 text-[11px] uppercase tracking-[0.22em] text-ink"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            aria-label="Toggle menu"
           >
             {open ? "Close" : "Menu"}
           </button>
@@ -113,26 +114,26 @@ export default function Navbar() {
 
         {/* Mobile drawer */}
         {open && (
-          <div className="md:hidden pb-4">
-            <div className="grid gap-1 pt-2">
+          <div className="md:hidden py-4 border-t border-rule">
+            <div className="grid gap-3">
               {links.map((l) => (
                 <Link
                   key={l.to}
                   to={l.to}
                   onClick={() => setOpen(false)}
-                  className="px-3 py-2 text-sm uppercase tracking-[0.08em] text-ink/80 hover:text-ink hover:bg-ink/[0.03] transition"
+                  className="text-[11px] uppercase tracking-[0.22em] text-ink/75 hover:text-ink"
                 >
                   {l.label}
                 </Link>
               ))}
             </div>
 
-            <div className="mt-4 flex items-center gap-4 px-3">
+            <div className="mt-4 flex gap-4">
               <IconLink href="https://x.com" label="X">
-                <SimpleXIcon />
+                <XIcon />
               </IconLink>
               <IconLink href="https://www.linkedin.com" label="LinkedIn">
-                <SimpleLinkedInIcon />
+                <LinkedInIcon />
               </IconLink>
             </div>
           </div>
