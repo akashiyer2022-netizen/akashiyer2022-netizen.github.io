@@ -1,14 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import heroImg from "../assets/hero.jpg";
 import Section from "../components/Section.jsx";
 
 function CortexCard({ title, subtitle, date, href, cta }) {
   return (
     <div className="rounded-2xl border border-line bg-paper shadow-soft overflow-hidden flex flex-col">
-      {/* Image placeholder block (keep it clean + “in your style”) */}
       <div className="h-40 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950" />
-
       <div className="p-6 flex-1 flex flex-col">
         <h3 className="text-lg font-semibold tracking-tight text-ink-950 text-center">
           {title}
@@ -67,29 +64,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/35 to-transparent" />
 
           <div className="absolute inset-0 flex items-end">
-            <div className="mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8 pb-12 sm:pb-16">
+            <div className="mx-auto max-w-6xl w-full px-4 sm:px-6 lg:px-8 pb-14 sm:pb-20">
               <div className="max-w-3xl text-left">
                 <h1 className="text-paper text-4xl sm:text-6xl font-semibold tracking-tight">
                   The Ursa Majors Group
                 </h1>
-                <p className="mt-3 text-paper/90 text-lg sm:text-2xl font-medium">
+                <p className="mt-4 text-paper/90 text-lg sm:text-2xl font-medium">
                   Educating everyone, everywhere
                 </p>
-
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <NavLink
-                    to="/about-us"
-                    className="inline-flex rounded-full bg-white px-6 py-3 text-sm font-bold text-slate-950 hover:bg-white/90 transition"
-                  >
-                    About Us
-                  </NavLink>
-                  <NavLink
-                    to="/allied-scholars"
-                    className="inline-flex rounded-full border border-white/25 px-6 py-3 text-sm font-bold text-paper hover:bg-white/10 transition"
-                  >
-                    Allied Scholars
-                  </NavLink>
-                </div>
               </div>
             </div>
           </div>
