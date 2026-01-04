@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 
+import Home from "./pages/Home.jsx";
 import About from "./pages/About.jsx";
 import AlliedScholars from "./pages/AlliedScholars.jsx";
 import MentorTeam from "./pages/MentorTeam.jsx";
@@ -20,7 +21,7 @@ export default function App() {
       <main className="flex-1">
         <Routes>
           {/* Home */}
-          <Route path="/" element={<Placeholder title="Home" />} />
+          <Route path="/" element={<Home />} />
 
           {/* Core */}
           <Route path="/about-us" element={<About />} />
