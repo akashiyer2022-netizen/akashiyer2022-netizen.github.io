@@ -69,8 +69,8 @@ export default function Sparx() {
             stories, and conversations shaping the future of STEM.
           </p>
           <p className="mt-4">
-            From in-depth discussions on emerging technology to conversations
-            with the next generation of scientists and engineers, Ursa Sparx
+            Through in-depth discussions on STEM
+            with scientists and engineers, Ursa Sparx
             brings you thought-provoking content designed to inspire, educate,
             and ignite curiosity.
           </p>
