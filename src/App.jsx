@@ -11,6 +11,9 @@ import MentorTeam from "./pages/MentorTeam.jsx";
 import SubjectsOffered from "./pages/SubjectsOffered.jsx";
 import MentorshipApplication from "./pages/MentorshipApplication.jsx";
 import Cortex from "./pages/Cortex.jsx";
+import Sparx from "./pages/Sparx.jsx";
+import Careers from "./pages/Careers.jsx";
+import Contact from "./pages/Contact.jsx";
 
 import Placeholder from "./pages/Placeholder.jsx";
 
@@ -34,10 +37,10 @@ export default function App() {
           <Route path="/mentorship-application" element={<MentorshipApplication />} />
 
           {/* Other nav items (placeholders for now) */}
-          <Route path="/sparx" element={<Placeholder title="Sparx" />} />
+          <Route path="/sparx" element={<Sparx />} />
           <Route path="/cortex" element={<Cortex />} />
-          <Route path="/careers" element={<Placeholder title="Careers" />} />
-          <Route path="/contact" element={<Placeholder title="Contact Us" />} />
+          <Route path="/careers" element={<Careers />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/get-involved" element={<Placeholder title="Get Involved" />} />
 
           {/* Catch-all */}
