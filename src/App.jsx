@@ -10,6 +10,7 @@ import AlliedScholars from "./pages/AlliedScholars.jsx";
 import MentorTeam from "./pages/MentorTeam.jsx";
 import SubjectsOffered from "./pages/SubjectsOffered.jsx";
 import MentorshipApplication from "./pages/MentorshipApplication.jsx";
+import Cortex from "./pages/Cortex.jsx";
 
 import Placeholder from "./pages/Placeholder.jsx";
 
@@ -34,7 +35,7 @@ export default function App() {
 
           {/* Other nav items (placeholders for now) */}
           <Route path="/sparx" element={<Placeholder title="Sparx" />} />
-          <Route path="/cortex" element={<Placeholder title="Cortex" />} />
+          <Route path="/cortex" element={<Cortex />} />
           <Route path="/careers" element={<Placeholder title="Careers" />} />
           <Route path="/contact" element={<Placeholder title="Contact Us" />} />
           <Route path="/get-involved" element={<Placeholder title="Get Involved" />} />
