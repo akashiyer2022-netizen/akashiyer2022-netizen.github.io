@@ -14,6 +14,7 @@ import Cortex from "./pages/Cortex.jsx";
 import Sparx from "./pages/Sparx.jsx";
 import Careers from "./pages/Careers.jsx";
 import Contact from "./pages/Contact.jsx";
+import ArticlePage from "./pages/ArticlePage.jsx";
 
 import Placeholder from "./pages/Placeholder.jsx";
 
@@ -39,6 +40,7 @@ export default function App() {
           {/* Other nav items (placeholders for now) */}
           <Route path="/sparx" element={<Sparx />} />
           <Route path="/cortex" element={<Cortex />} />
+          <Route path="/cortex/:slug" element={<ArticlePage />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/get-involved" element={<Placeholder title="Get Involved" />} />

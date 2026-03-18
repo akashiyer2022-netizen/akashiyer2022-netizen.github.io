@@ -2,89 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import heroImg from "../assets/hero.jpg";
 import Section from "../components/Section.jsx";
+import { articles } from "../data/cortexArticles.js";
 
-const articles = [
-  {
-    title: "Robotic Bronchoscopy Is Moving Earlier",
-    subtitle: "How precision tools are reshaping lung cancer diagnosis",
-    date: "February 10, 2026",
-    href: "https://www.theursamajorsgroup.org/robotic-bronchoscopy-is-moving-earlier",
-  },
-  {
-    title: "Commercial Space Stations Are Getting Real",
-    subtitle: "How CLD is moving from concepts to execution",
-    date: "January 29, 2026",
-    href: "https://www.theursamajorsgroup.org/commercial-space-stations-are-getting-real",
-  },
-  {
-    title: "Robots Are Leaving the Lab",
-    subtitle: "How unstructured work is reshaping autonomy",
-    date: "January 12, 2026",
-    href: "https://www.theursamajorsgroup.org/robots-are-leaving-the-lab",
-  },
-  {
-    title: "Robotaxis Are Not Just a Tech Story",
-    subtitle: "They are a trust, policy, and street-level reality check",
-    date: "January 5, 2026",
-    href: "https://www.theursamajorsgroup.org/robotaxis-are-not-just-a-tech-story",
-  },
-  {
-    title: "What College Doesn't Teach Engineers",
-    subtitle: "What is expected of engineers",
-    date: "December 29, 2024",
-    href: "https://www.theursamajorsgroup.org/what-college-doesnt-teach-engineers",
-  },
-  {
-    title: "Satellite Megaconstellations",
-    subtitle: "Connectivity in orbit reshapes astronomy and sustainability",
-    date: "December 2025",
-    href: "https://www.theursamajorsgroup.org/satellite-megaconstellations",
-  },
-  {
-    title: "AI & Robotics in Space",
-    subtitle: "Autonomy Moves From the Lab to the ISS",
-    date: "December 15, 2025",
-    href: "https://www.theursamajorsgroup.org/ai-robotics-in-space",
-  },
-  {
-    title: "New Minds, New Machines",
-    subtitle: "How brain–computer interfaces are redefining what it means to think, feel, and do",
-    date: "November 2, 2025",
-    href: "https://www.theursamajorsgroup.org/new-minds-new-machines",
-  },
-  {
-    title: "Saving Low Earth Orbit",
-    subtitle: "Why debris threatens space—and how we fix it",
-    date: "October 31, 2025",
-    href: "https://www.theursamajorsgroup.org/saving-low-earth-orbit",
-  },
-  {
-    title: "New Space Age",
-    subtitle: "Companies like SpaceX and Axiom are changing how we reach orbit",
-    date: "October 30, 2025",
-    href: "https://www.theursamajorsgroup.org/new-space-age",
-  },
-  {
-    title: "The Power of Renewal",
-    subtitle: "Past, Present, and Future of Renewable Energy",
-    date: "October 28, 2025",
-    href: "https://www.theursamajorsgroup.org/the-power-of-renewal",
-  },
-  {
-    title: "Mars in Houston",
-    subtitle: "NASA's Year-Long Habitat Simulation",
-    date: "September 10, 2025",
-    href: "https://www.theursamajorsgroup.org/mars-in-houston",
-  },
-  {
-    title: "Aging Among the Stars",
-    subtitle: "Long spaceflights can accelerate how cells age",
-    date: "September 8, 2025",
-    href: "https://www.theursamajorsgroup.org/aging-among-the-stars",
-  },
-];
-
-function ArticleCard({ title, subtitle, date, href }) {
+function ArticleCard({ slug, title, subtitle, date }) {
   return (
     <div className="rounded-2xl border border-line bg-paper shadow-soft overflow-hidden flex flex-col">
       <div className="h-40 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950" />
@@ -97,14 +17,12 @@ function ArticleCard({ title, subtitle, date, href }) {
           {date}
         </p>
         <div className="mt-5">
-          <a
-            href={href}
-            target="_blank"
-            rel="noreferrer"
+          <NavLink
+            to={`/cortex/${slug}`}
             className="inline-flex items-center rounded-full bg-ink-950 text-paper px-5 py-2 text-sm font-bold hover:bg-ink-900 transition"
           >
             Read More
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>
@@ -161,7 +79,7 @@ export default function Cortex() {
       <Section title="Articles" eyebrow="Ursa Cortex">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((article) => (
-            <ArticleCard key={article.href} {...article} />
+            <ArticleCard key={article.slug} {...article} />
           ))}
         </div>
       </Section>
