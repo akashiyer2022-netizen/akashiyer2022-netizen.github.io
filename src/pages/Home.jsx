@@ -1,8 +1,9 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import heroImg from "../assets/hero.jpg";
 import Section from "../components/Section.jsx";
 
-function CortexCard({ title, subtitle, date, href, cta }) {
+function CortexCard({ title, subtitle, date, slug, cta }) {
   return (
     <div className="rounded-2xl border border-line bg-paper shadow-soft overflow-hidden flex flex-col">
       <div className="h-40 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950" />
@@ -17,14 +18,12 @@ function CortexCard({ title, subtitle, date, href, cta }) {
         </p>
 
         <div className="mt-6 flex justify-center">
-          <a
-            href={href}
-            target="_blank"
-            rel="noreferrer"
+          <NavLink
+            to={`/cortex/${slug}`}
             className="inline-flex items-center rounded-full bg-ink-950 text-paper px-5 py-2 text-sm font-bold hover:bg-ink-900 transition"
           >
             {cta}
-          </a>
+          </NavLink>
         </div>
       </div>
     </div>
@@ -89,37 +88,35 @@ export default function Home() {
       <Section title="Latest From Ursa Cortex">
         <div className="grid gap-6 md:grid-cols-3">
           <CortexCard
-            title="New Minds, New Machines"
-            subtitle="How brain–computer interfaces are redefining what it means to think, feel, and do"
-            date="November 2, 2025"
-            href="https://www.theursamajorsgroup.org/new-minds-new-machines"
-            cta="Click Here"
-          />
-          <CortexCard
-            title="Saving Low Earth Orbit"
-            subtitle="Why debris threatens space—and how we fix it"
-            date="October 31, 2025"
-            href="https://www.theursamajorsgroup.org/saving-low-earth-orbit"
+            title="Robotic Bronchoscopy Is Moving Earlier"
+            subtitle="How precision tools are reshaping lung cancer diagnosis"
+            date="February 10, 2026"
+            slug="robotic-bronchoscopy"
             cta="Read More"
           />
           <CortexCard
-            title="New Space Age"
-            subtitle="Companies like SpaceX and Axiom are changing how we reach orbit"
-            date="October 30, 2025"
-            href="https://www.theursamajorsgroup.org/new-space-age"
+            title="Commercial Space Stations Are Getting Real"
+            subtitle="How CLD is moving from concepts to execution"
+            date="January 29, 2026"
+            slug="commercial-space-stations"
+            cta="Read More"
+          />
+          <CortexCard
+            title="Robots Are Leaving the Lab"
+            subtitle="How unstructured work is reshaping autonomy"
+            date="January 12, 2026"
+            slug="robots-leaving-lab"
             cta="Read More"
           />
         </div>
 
         <div className="mt-10 flex justify-center">
-          <a
-            href="https://www.theursamajorsgroup.org/cortex"
-            target="_blank"
-            rel="noreferrer"
+          <NavLink
+            to="/cortex"
             className="inline-flex rounded-full bg-ink-950 text-paper px-7 py-3 text-sm font-bold hover:bg-ink-900 transition"
           >
             Visit Ursa Cortex
-          </a>
+          </NavLink>
         </div>
       </Section>
 
