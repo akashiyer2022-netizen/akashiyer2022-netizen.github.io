@@ -5,7 +5,8 @@ import Section from "../components/Section.jsx";
 
 export default function Contact() {
   const [form, setForm] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     organization: "",
     email: "",
     message: "",
@@ -104,19 +105,35 @@ export default function Contact() {
         <div className="mx-auto max-w-2xl">
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             {/* Name */}
-            <div>
-              <label className="block text-sm font-semibold text-ink-950 mb-1.5">
-                Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                placeholder="Your full name"
-                className="w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-ink-950/20"
-              />
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-semibold text-ink-950 mb-1.5">
+                  First Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={form.firstName}
+                  onChange={handleChange}
+                  required
+                  placeholder="First name"
+                  className="w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-ink-950/20"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-ink-950 mb-1.5">
+                  Last Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={form.lastName}
+                  onChange={handleChange}
+                  required
+                  placeholder="Last name"
+                  className="w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-ink-950/20"
+                />
+              </div>
             </div>
 
             {/* Organization */}

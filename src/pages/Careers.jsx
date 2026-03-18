@@ -13,7 +13,8 @@ const DIVISIONS = [
 
 export default function Careers() {
   const [form, setForm] = useState({
-    name: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     divisions: [],
@@ -135,19 +136,35 @@ export default function Careers() {
         <div className="mx-auto max-w-2xl">
           <form onSubmit={handleSubmit} className="flex flex-col gap-6">
             {/* Name */}
-            <div>
-              <label className="block text-sm font-semibold text-ink-950 mb-1.5">
-                Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                placeholder="Your full name"
-                className="w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-ink-950/20"
-              />
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-semibold text-ink-950 mb-1.5">
+                  First Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={form.firstName}
+                  onChange={handleChange}
+                  required
+                  placeholder="First name"
+                  className="w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-ink-950/20"
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-ink-950 mb-1.5">
+                  Last Name <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={form.lastName}
+                  onChange={handleChange}
+                  required
+                  placeholder="Last name"
+                  className="w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-ink-950/20"
+                />
+              </div>
             </div>
 
             {/* Email */}
@@ -221,7 +238,7 @@ export default function Careers() {
                 onChange={handleChange}
                 required
                 rows={5}
-                placeholder="Tell us about yourself and your motivation..."
+                placeholder="Tell us about why you're interested in joining our team! "
                 className="w-full rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink-900 placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-ink-950/20 resize-none"
               />
             </div>
@@ -232,8 +249,7 @@ export default function Careers() {
                 Resume / CV <span className="text-red-500">*</span>
               </label>
               <p className="text-xs text-muted mb-2">
-                Please attach your resume and/or CV (PDF preferred, 2 files
-                max).
+                Please attach your resume and/or CV.
               </p>
               <input
                 type="file"
